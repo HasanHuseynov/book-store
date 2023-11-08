@@ -2,6 +2,7 @@ package com.example.bookstore.controller;
 
 import com.example.bookstore.dto.request.StudentRequest;
 import com.example.bookstore.dto.response.StudentResponse;
+import com.example.bookstore.entity.Student;
 import com.example.bookstore.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,15 @@ import java.util.List;
 public class StudentController {
     private final StudentService studentService;
 
-    //testing
     @GetMapping
     public ResponseEntity<List<StudentResponse>> getALlStudent() {
 
         return ResponseEntity.ok(studentService.getAllStudents());
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<StudentResponse> getStudentById(@PathVariable Integer id){
+        return ResponseEntity.ok(studentService.getStudentById(id));
     }
     @PostMapping
     public ResponseEntity<StudentResponse> createNewStudent(@Valid @RequestBody StudentRequest studentRequest) {

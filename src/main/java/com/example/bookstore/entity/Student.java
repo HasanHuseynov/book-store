@@ -34,8 +34,8 @@ public class Student {
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private List<Subscriptions> subscriptions;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "book_id")
-    private List<Book> books;
+    private Book book;
 
 }

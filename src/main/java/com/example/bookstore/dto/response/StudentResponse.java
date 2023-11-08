@@ -17,6 +17,7 @@ public class StudentResponse {
     private Integer age;
     private List<SubscriptionsResponse> subscriptions;
 
-    private  List<BookResponse> book;
+    private BookResponse book;
+
 
 }

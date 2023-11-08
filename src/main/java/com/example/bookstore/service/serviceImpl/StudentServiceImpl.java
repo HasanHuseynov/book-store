@@ -31,6 +31,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public StudentResponse getStudentById(Integer id) {
+        var studentEntity = studentRepository.findById(id).orElseThrow(() -> {
+            return new NotDataFound("Not data found");
+        });
+        return studentMapper.toDTO(studentEntity);
+    }
+
+    @Override
     public StudentResponse createStudent(StudentRequest studentRequest) {
         Student studentEntity = studentMapper.fromDTO(studentRequest);
         studentEntity = studentRepository.save(studentEntity);
